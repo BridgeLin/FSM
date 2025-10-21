@@ -1,5 +1,5 @@
 {
-    "name": "com.yuchelin.FSM",
+    "name": "com.yuchelin.fsm",
     "version": "1.0.0",
     "displayName": "Finite State Machine",
     "description": "This is an example package",
