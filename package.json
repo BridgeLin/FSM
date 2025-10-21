@@ -1,1 +1,17 @@
-
+{
+    "name": "com.yuchelin.FSM",
+    "version": "1.0.0",
+    "displayName": "Finite State Machine",
+    "description": "This is an example package",
+    "unity": "2022.1",
+    "documentationUrl": "https://example.com/",
+    "changelogUrl": "https://example.com/changelog.html",
+    "licensesUrl": "https://example.com/licensing.html",
+    "dependencies": {
+    },
+    "author": {
+        "name": "Yu-Che Lin",
+        "email": "tommy19981008@gmail.com",
+        "url": "https://linkedin.com/in/yuchelin"
+    }
+}
