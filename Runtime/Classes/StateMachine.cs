@@ -8,16 +8,27 @@ namespace FSM {
         private List<IState> _states;
         private string _defaultStateName;
         private IState _currentState;
+        private IState _anyState;
 
         public UnityEvent<IState> OnStateChanged=new UnityEvent<IState>();
 
-        public StateMachine(List<IState> states, string defaultStateName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="states">A list for store states.</param>
+        /// <param name="defaultStateName">The name of default state.</param>
+        /// <param name="anyState">Anystate is an unique state, its OnConditionUpdate and OnUpdate will be triggered prior to any current state.</param>
+        public StateMachine(List<IState> states, string defaultStateName, IState anyState=null)
         {
             _states = states;
             _defaultStateName = defaultStateName;
+            _anyState = anyState;
         }
 
         #region IStateMachine
+        /// <summary>
+        /// Enter the default state.
+        /// </summary>
         public void Initialize()
         {
             EnterState(_defaultStateName);
@@ -34,6 +45,7 @@ namespace FSM {
                 {
                     return false;
                 }
+
                 _currentState.OnExit();
             }
 
@@ -84,6 +96,15 @@ namespace FSM {
         {
             if (_currentState != null)
             {
+                if (_anyState!=null)
+                {
+                    if (_anyState.OnConditionUpdate(this))
+                    {
+                        return;
+                    }
+                    _anyState.OnUpdate();
+                }
+
                 if (_currentState.OnConditionUpdate(this))
                 {
                     return;
