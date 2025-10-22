@@ -68,6 +68,18 @@ namespace FSM {
             }
         }
 
+        public void RemoveState(IState state)
+        {
+            int index = _states.FindIndex(s => s.GetName() == state.GetName());
+            if (index == -1)
+            {
+                return;
+            }
+            else
+            {
+                _states.RemoveAt(index);
+            }
+        }
         public void StateUpdate()
         {
             if (_currentState != null)
@@ -79,6 +91,7 @@ namespace FSM {
                 _currentState.OnUpdate();
             }
         }
+
         #endregion
 
     }
