@@ -1,5 +1,4 @@
 using FSM;
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace FSM_Sample
         private int _currentHp = 3;
 
         private const string STATE_IDLE = "idle";
-        private const string STATE_MOVING = "running";
+        private const string STATE_MOVING = "moving";
         private const string STATE_DIE = "die";
         private const string STATE_ANY = "any";
 

@@ -20,6 +20,7 @@ namespace FSM {
 
         /// <summary>
         /// Forces the state machine to enter the specified target state. 
+        /// Returns false when the state machine is already in the state.
         /// </summary>
         /// <param name="targetStateName"></param>
         /// <returns></returns>
@@ -31,10 +32,10 @@ namespace FSM {
         /// <param name="state"></param>
         public void AddState(IState state);
         /// <summary>
-        /// Overrides the state.
+        /// Overrides the existing state with the new one.
         /// </summary>
-        /// <param name="state"></param>
-        public void OverrideState(IState state);
+        /// <param name="newState"></param>
+        public void OverrideState(IState newState);
         /// <summary>
         /// Removes the state from this state machine.
         /// </summary>
@@ -42,7 +43,7 @@ namespace FSM {
         public void RemoveState(IState state);
 
         /// <summary>
-        /// This method can be called at any moment of the game loop.
+        /// This method can be called any moment of the game loop.
         /// Being called, the state machine will call the current state's OnConditionUpdate and OnUpdate.
         /// </summary>
         public void StateUpdate();
