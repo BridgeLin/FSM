@@ -79,7 +79,7 @@ public class State : IState
 ##### Constructor
 |Constructor |Description|
 |-|-|
-|public State(string name, Action enterEvent = null, Action exitEvent = null, Condition[] conditions = null, Action updateEvent=null)| Initializes a new instance of the ```State``` class that contains elements name, (optional) eneterEvent, (optional) exitEvent, (optional) conditions, (optional) updateEvent.|
+|```public State(string name, Action enterEvent = null, Action exitEvent = null, Condition[] conditions = null, Action updateEvent=null)```| Initializes a new instance of the ```State``` class that contains elements name, (optional) eneterEvent, (optional) exitEvent, (optional) conditions, (optional) updateEvent.|
 
 #### StateMachine
 ##### Defination
@@ -89,7 +89,7 @@ public class StateMachine:IStateMachine
 ##### Constructor
 |Constructor|Description|
 |-|-|
-|public StateMachine(List<IState> states, string defaultStateName, IState anyState=null)|Initializes a new instance of the ```StateMachine``` class that contains states, name of the default state, (optional) any state.|
+|```public StateMachine(List<IState> states, string defaultStateName, IState anyState=null)```|Initializes a new instance of the ```StateMachine``` class that contains states, name of the default state, (optional) any state.|
 
 ### Struct
 #### Condition
@@ -101,7 +101,7 @@ public struct Condition
 ##### Constructor
 |Constructor |Description|
 |-|-|
-|public Condition(string targetStateName,Func<bool> condition)|Initializes a new instance of the ```Condition``` struct.|
+|```public Condition(string targetStateName,Func<bool> condition)```|Initializes a new instance of the ```Condition``` struct.|
 ##### Public Method
 |Method|Return|Description|
 |-|-|-|
