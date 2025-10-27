@@ -5,15 +5,18 @@ namespace FSM {
     {
         private string _name;
         private Action _enterEvent;
-        private Action _exitEvent;   
+        private Action _exitEvent;
+        // When staywhile is true, the system will not check conditions.
+        private Func<bool> _stayWhile;
         private Condition[] _conditions;
         private Action _updateEvent;
 
-        public State(string name,Action enterEvent = null, Action exitEvent = null, Condition[] conditions = null, Action updateEvent=null)
+        public State(string name,Action enterEvent = null, Action exitEvent = null,Func<bool> stayWhile=null,Condition[] conditions = null, Action updateEvent=null)
         {
             _name = name;
             _enterEvent = enterEvent;
             _exitEvent = exitEvent;
+            _stayWhile = stayWhile;
             _conditions = conditions;
             _updateEvent = updateEvent;
         }
@@ -34,6 +37,13 @@ namespace FSM {
         {
             if(_exitEvent == null) return;
             _exitEvent.Invoke();
+        }
+
+        public bool KeepStaying()
+        {
+            if(_stayWhile==null) return false;
+            else
+            return _stayWhile();
         }
 
         public bool OnConditionUpdate(IStateMachine stateMachine)

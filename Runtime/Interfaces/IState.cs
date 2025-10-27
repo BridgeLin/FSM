@@ -30,6 +30,12 @@ namespace FSM {
         /// <returns></returns>
         public string GetName();
 
+        /// <summary>
+        /// Check if the state can be exited.
+        /// </summary>
+        /// <returns></returns>
+        public bool KeepStaying();
+
     }
 }
 

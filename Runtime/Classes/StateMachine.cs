@@ -96,19 +96,22 @@ namespace FSM {
         {
             if (_currentState != null)
             {
-                if (_anyState!=null)
-                {
-                    if (_anyState.OnConditionUpdate(this))
+                if (!_currentState.KeepStaying()) {
+                    if (_anyState != null)
+                    {
+                        if (_anyState.OnConditionUpdate(this))
+                        {
+                            return;
+                        }
+                        _anyState.OnUpdate();
+                    }
+
+                    if (_currentState.OnConditionUpdate(this))
                     {
                         return;
                     }
-                    _anyState.OnUpdate();
                 }
 
-                if (_currentState.OnConditionUpdate(this))
-                {
-                    return;
-                }
                 _currentState.OnUpdate();
             }
         }
