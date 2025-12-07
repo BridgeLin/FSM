@@ -31,6 +31,20 @@ namespace FSM {
         public string GetName();
 
 
+        #region Override Methods
+        public void OverrideEnterEvent(System.Action newEnterEvent);
+        public void OverrideExitEvent(System.Action newExitEvent);
+        public void OverrideConditions(Condition[] newConditions);
+        public void OverrideUpdateEvent(System.Action newUpdateEvent);
+        #endregion
+
+
+        #region Add Methods
+        public void AddEnterEvent(System.Action additionalEnterEvent);
+        public void AddExitEvent(System.Action additionalExitEvent);
+        public void AddConditions(Condition additionalConditions);
+        public void AddUpdateEvent(System.Action additionalUpdateEvent);
+        #endregion
     }
 }
 

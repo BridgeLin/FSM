@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace FSM {
     public class State : IState
@@ -59,6 +60,46 @@ namespace FSM {
             if (_updateEvent == null) return;
 
             _updateEvent.Invoke();
+        }
+
+        public void OverrideEnterEvent(Action newEnterEvent)
+        {
+            _enterEvent = newEnterEvent;
+        }
+
+        public void OverrideExitEvent(Action newExitEvent)
+        {
+            _exitEvent= newExitEvent;
+        }
+
+        public void OverrideConditions(Condition[] newConditions)
+        {
+            _conditions = newConditions;
+        }
+
+        public void OverrideUpdateEvent(Action newUpdateEvent)
+        {
+            _updateEvent = newUpdateEvent;
+        }
+
+        public void AddEnterEvent(Action additionalEnterEvent)
+        {
+            _enterEvent += additionalEnterEvent;
+        }
+
+        public void AddExitEvent(Action additionalExitEvent)
+        {
+            _exitEvent += additionalExitEvent;
+        }
+
+        public void AddConditions(Condition additionalConditions)
+        {
+            _conditions=_conditions.Append(new Condition()).ToArray();
+        }
+
+        public void AddUpdateEvent(Action additionalUpdateEvent)
+        {
+            _updateEvent += additionalUpdateEvent;
         }
         #endregion
     }
