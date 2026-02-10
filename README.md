@@ -101,7 +101,7 @@ public struct Condition
 ##### Constructor
 |Constructor |Description|
 |-|-|
-|```public Condition(string targetStateName,Func<bool> condition)```|Initializes a new instance of the ```Condition``` struct.|
+|```public Condition(string targetStateName,Func<bool> condition,Action onTrueEvent=null)```|Initializes a new instance of the ```Condition``` struct.|
 ##### Public Method
 |Method|Return|Description|
 |-|-|-|

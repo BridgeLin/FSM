@@ -44,9 +44,10 @@ namespace FSM {
 
             foreach (var condition in _conditions)
             {
-                if (condition.Invoke(out string target)) {
+                if (condition.Invoke(out string target,out Action onTrueEvent)) {
                     if (target == null) return true;
                     else {
+                        onTrueEvent?.Invoke();
                         stateMachine.EnterState(target);
                         return true;
                     }
@@ -107,16 +108,29 @@ namespace FSM {
 
     public struct Condition {
         private Func<bool> condition;
+        private Action onTrueEvent;
         private string targetStateName;
-        public Condition(string targetStateName,Func<bool> condition)
+        public Condition(string targetStateName,Func<bool> condition,Action onTrueEvent=null)
         {
             this.condition = condition;
             this.targetStateName = targetStateName;
+            this.onTrueEvent = onTrueEvent;
         }
 
-        public bool Invoke(out string target) {
+        public bool Invoke(out string target, out Action onTrueEvent) {
             target = targetStateName;
-            return condition.Invoke();
+            bool result = condition.Invoke();
+
+            if (result)
+            {
+                onTrueEvent=this.onTrueEvent;
+            }
+            else
+            {
+                onTrueEvent = null;
+            }
+
+                return result;
         }
     }
 }
