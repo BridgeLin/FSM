@@ -1,3 +1,5 @@
+## [1.0.3] -2026-05-16
+-Fixed bugs
 ## [1.0.2] -2026-02-10
 - Added onTrueEvent in StateTransition.
 ## [1.0.1] -2025-10-27

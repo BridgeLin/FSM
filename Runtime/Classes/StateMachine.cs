@@ -96,13 +96,14 @@ namespace FSM {
         {
             if (_currentState != null)
             {
+                _currentState.OnUpdate();
+
                 if (_anyState != null)
                 {
                     _anyState.OnUpdate();
                     if (_anyState.OnConditionUpdate(this)) return;
                 }
 
-                _currentState.OnUpdate();
                 if (_currentState.OnConditionUpdate(this))return;
             }
         }
