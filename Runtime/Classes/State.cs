@@ -95,7 +95,7 @@ namespace FSM {
 
         public void AddConditions(Condition additionalConditions)
         {
-            _conditions=_conditions.Append(new Condition()).ToArray();
+            _conditions=_conditions.Append(additionalConditions).ToArray();
         }
 
         public void AddUpdateEvent(Action additionalUpdateEvent)
